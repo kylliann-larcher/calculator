@@ -1,0 +1,19 @@
+from pynput # type: ignore
+
+import keyboard
+
+def on_press(key):
+    try:
+        # Affiche la touche appuyée
+        print(f"Touche appuyée : {key.char}")
+    except AttributeError:
+        print(f"Touche spéciale appuyée : {key}")
+
+def on_release(key):
+    # Arrête le listener si 'Échap' est appuyé
+    if key == keyboard.Key.esc:
+        return False
+
+# Initialise le listener
+with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    listener.join()
