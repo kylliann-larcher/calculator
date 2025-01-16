@@ -93,24 +93,13 @@ def clear_history():
 def menu():
     print("---------------------- Welcome to the Calculator -------------------")
     print("Choose an operation:")
-    print("1. Addition")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Division")
-    print("5. Square")
-    print("6. Square Root")
-    print("7. Power")
-    print("8. Logarithm (base 10)")
-    print("9. Factorial")
-    print("10. Modulo")
-    print("11. Floor Division")
-    print("12. Absolute Value")
-    print("13. Sine")
-    print("14. Cosine")
-    print("15. Tangent")
-    print("16. Show History")
-    print("17. Clear History")
-    print("18. Exit")
+    print("1. Addition        2. Subtraction     3. Multiplication   4. Division") 
+    print("==============   Scientist Mode:  =============")
+    print("5. Square          6. Square Root     7. Power            8. Logarithm (base 10)")
+    print("9. Factorial       10. Modulo        11. Floor Division   12. Absolute Value")
+    print("13. Sine           14. Cosine        15. Tangent           16. Show History")
+    print("17. Clear History  18. Exit")   
+
 
 # Calculator function
 def calculator():
@@ -147,7 +136,7 @@ def calculator():
                 history.append(f"{number_1} {symbol} {number_2} = {result}")
                 last_result = result
 
-            elif choice in ['5', '6', '8', '9']:  # Operations requiring one number
+            elif choice in ['5', '6', '8', '9', '12', '13', '14', '15']:  # Operations requiring one number
                 if last_result is not None:
                     use_last_result = input("Use the last result? (y/n): ").lower()
                     if use_last_result == 'y':
@@ -169,6 +158,18 @@ def calculator():
                 elif choice == '9':
                     result = factorial(number)
                     print(f"Factorial of {number} = {result}")
+                elif choice == '12':
+                    result = absolute_value(number)
+                    print(f"Absolute value of {number} = {result}")
+                elif choice == '13':
+                    result = sine(number)
+                    print(f"Sine of {number} degrees = {result}")
+                elif choice == '14':
+                    result = cosine(number)
+                    print(f"Cosine of {number} degrees = {result}")
+                elif choice == '15':
+                    result = tangent(number)
+                    print(f"Tangent of {number} degrees = {result}")
 
                 history.append(f"Result: {result}")
                 last_result = result
@@ -183,7 +184,6 @@ def calculator():
             elif choice == '18':  # Exit
                 print("--------------- Thank you for using the calculator ---------------")
                 break
-
             else:
                 print("Invalid choice, try again.")
         except ValueError:
