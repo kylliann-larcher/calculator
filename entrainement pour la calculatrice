@@ -1,0 +1,53 @@
+from tkinter import *
+
+# Fonction pour gérer les clics sur les boutons
+def bouton_click(event):
+    global equation
+    bouton_text = event.widget.cget("text")
+    if bouton_text == "=":  # Calculer le résultat
+        try:
+            result = eval(equation.get())
+            equation.set(result)
+        except Exception as e:
+            equation.set("Erreur")
+    elif bouton_text == "C":  # Effacer l'équation
+        equation.set("")
+    else:  # Ajouter le texte du bouton à l'équation
+        equation.set(equation.get() + str(bouton_text))
+
+if __name__ == "__main__":
+    gui = Tk()
+
+    # Couleur du fond 
+    gui.configure(background="#894447")
+
+    # Titre de l'application
+    gui.title("Calculatrice")
+
+    # Taille de la fenêtre 
+    gui.geometry("235x385")
+
+    # Variable pour stocker le contenu
+    equation = StringVar()
+    equation.set("")  # Initialiser l'équation vide
+
+    # Boîte pour les résultats
+    resultat = Label(gui, bg="#894447", fg="#FFF", textvariable=equation, height=2, font=("Arial", 16))
+    resultat.grid(columnspan=4)
+
+    # Boutons
+    boutons = [7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", "C", 0, ".", "/", "="]
+    ligne = 1
+    colonne = 0
+
+    for bouton in boutons:
+        b = Button(gui, text=str(bouton), bg="#476C9B", fg="#FFF", height=2, width=6, font=("Arial", 12))
+        b.bind("<Button-1>", bouton_click)
+        b.grid(row=ligne, column=colonne, padx=5, pady=5)
+        colonne += 1
+        if colonne == 4:
+            colonne = 0
+            ligne += 1
+
+    # Démarrer la boucle principale de tkinter
+    gui.mainloop()
