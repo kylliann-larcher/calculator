@@ -91,10 +91,14 @@ def clear_history():
 
 # Display options menu
 def menu():
+    print("   ")
+    print("   ")
     print("---------------------- Welcome to the Calculator -------------------")
     print("Choose an operation:")
     print("1. Addition        2. Subtraction     3. Multiplication   4. Division") 
+    print("                                                        ")
     print("==============   Scientist Mode:  =============")
+    print("                               ")
     print("5. Square          6. Square Root     7. Power            8. Logarithm (base 10)")
     print("9. Factorial       10. Modulo        11. Floor Division   12. Absolute Value")
     print("13. Sine           14. Cosine        15. Tangent           16. Show History")
