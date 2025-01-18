@@ -39,6 +39,9 @@ python nom_du_fichier.py
 
 ## Auteur
 Développé par Kylliann LARCHER.
+              Kerry MAUREEMOOTOO 
+              Zakaria MAANANE
+
 
 ## Licence
 Ce projet est libre d'utilisation à des fins éducatives.
